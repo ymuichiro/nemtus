@@ -10,13 +10,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useTheme } from "@mui/material/styles";
 import Drawer from "@mui/material/Drawer";
 import Container from "@mui/material/Container";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Header() {
   const theme = useTheme();
   const [open, setOpen] = React.useState<boolean>(false);
+  const matches = useMediaQuery(theme.breakpoints.between("xs", "sm"));
 
   return (
     <React.Fragment>
@@ -27,6 +27,7 @@ export default function Header() {
           display: "flex",
           justifyContent: "center",
           paddingTop: "20px",
+          zIndex: theme.zIndex.appBar,
         }}
       >
         <Container
@@ -54,47 +55,47 @@ export default function Header() {
                 component="div"
                 sx={{ flexGrow: 1 }}
               >
-                NEMTUS
+                TITLE
               </Typography>
-
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                }}
-              >
-                <Button
-                  variant="text"
+              {matches || (
+                <div
                   style={{
-                    color: "black",
-                    paddingRight: "50px",
-                    fontWeight: "bold",
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    gap: "40px",
+                    marginRight: "40px",
                   }}
                 >
-                  TOP
-                </Button>
-                <Button
-                  variant="text"
-                  style={{
-                    color: "black",
-                    paddingRight: "50px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  ABOUT
-                </Button>
-                <Button
-                  variant="text"
-                  style={{
-                    color: "black",
-                    paddingRight: "50px",
-                    fontWeight: "bold",
-                  }}
-                >
-                  POLICY
-                </Button>
-              </div>
+                  <Button
+                    variant="text"
+                    style={{
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    TOP
+                  </Button>
+                  <Button
+                    variant="text"
+                    style={{
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    ABOUT
+                  </Button>
+                  <Button
+                    variant="text"
+                    style={{
+                      color: "black",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    POLICY
+                  </Button>
+                </div>
+              )}
 
               <IconButton
                 size="large"

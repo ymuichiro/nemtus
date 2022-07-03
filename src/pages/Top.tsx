@@ -19,10 +19,6 @@ export default function Top() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.between("xs", "md"));
 
-  useEffect(() => {
-    console.log(matches);
-  }, [matches]);
-
   return (
     <div className="App">
       <CssBaseline>
@@ -160,9 +156,7 @@ export default function Top() {
                           {item.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          Lizards are a widespread group of squamate reptiles,
-                          with over 6,000 species, ranging across all continents
-                          except Antarctica
+                          {item.desc}
                         </Typography>
                       </CardContent>
                       <CardActions>
